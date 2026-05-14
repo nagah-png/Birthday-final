@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ميلاد أغلى الناس ✨</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background-color: #000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; color: #fff; }
+        .container { text-align: center; background: #111; padding: 40px 20px; border-radius: 20px; box-shadow: 0 0 20px rgba(255,255,255,0.1); border: 1px solid #333; width: 90%; max-width: 450px; z-index: 10; margin: 20px; }
+        h1 { color: #fff; font-size: 1.3rem; margin-bottom: 25px; line-height: 1.8; }
+        .buttons { display: flex; justify-content: center; gap: 15px; flex-direction: column; align-items: center; }
+        button { padding: 15px 25px; border-radius: 10px; border: 1px solid #fff; cursor: pointer; font-size: 1.1rem; font-weight: bold; transition: 0.3s; width: 85%; background: transparent; color: #fff; }
+        button:hover { background: #fff; color: #000; }
+        #noBtn { position: relative; width: auto; min-width: 100px; }
+        .final-text { color: #fff; font-size: 1.1rem; line-height: 2; text-align: center; white-space: pre-line; }
+        .step-text { font-size: 1.2rem; margin-bottom: 20px; display: block; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <div id="content">
+            <h1 id="question">Happy birthday علوشة قلبي ❣️<br><br>أول شي.. بتحبني؟ حاول تضغط "لا" إذا بتقدر! 😉</h1>
+            <div class="buttons" id="btnGroup">
+                <button onclick="showFinal()">أي بحبك</button>
+                <button id="noBtn" onmouseover="moveButton(event)" ontouchstart="moveButton(event)" onclick="showAngryStep()">لا</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        function moveButton(e) {
+            if (e) e.preventDefault();
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40);
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // الخطوة الأولى: رسالة الحرد
+        function showAngryStep() {
+            document.getElementById('content').innerHTML = `
+                <span class="step-text">يعني جربت تضغط على لا؟ 🙂 <br> ماشي يا علي بطلت أعايد عليك.. حردت! 😤</span>
+                <button onclick="showChanceStep()" style="margin-top:20px;">طيب كملي..</button>
+            `;
+        }
+
+        // الخطوة الثانية: رسالة الفرصة الثانية
+        function showChanceStep() {
+            document.getElementById('content').innerHTML = `
+                <span class="step-text">خلص رح أعطيك فرصة تانية.. <br> هلق بتحبني؟ 🌚</span>
+                <div class="buttons">
+                    <button onclick="showFinal()">أي أكيد</button>
+                    <button onclick="showFinal()">أي كبييييرة ❤️</button>
+                </div>
+            `;
+        }
+
+        function showFinal() {
+            // كنفيتي باللون الأبيض والرمادي ليناسب التصميم
+            confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 }, colors: ['#ffffff', '#cccccc', '#666666'] });
+            
+            document.getElementById('content').innerHTML = `
+                <div class="final-text">
+                    🌟 يا أفخم مواليد مايو 👑
+
+                    يوم ميلادك هو يوم ميلاد الأيام الحلوة بحياتي..
+                    كبرت سنة وكبر حبك في قلبي سنييييين ❤️
+
+                    كل عام وأنت الحب والخشير وأبو شريك 😂🫂
+                    كل عام وأنت بخير يا وجه الخير، الدنيا ما تحلى إلا فيك وبعيونك وصوتك..
+
+                    يا جعل عمرك جنبي كل الأعوام، ويا جعل عيد ميلادك يمر ألف عام ✨
+
+                    <b>So lucky to have you
+                    And my heart is full of you</b> 🫂❤️
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
